@@ -1,0 +1,19 @@
+{
+    "name": "Wick",
+    "colour": "2F3136",
+    "token": "Add token bot",
+    "clientId": "Add id bot",
+    "ownerIDS": [
+      "Add owner ids",
+      "Add owner ids two",
+      "Add owner ids three"
+    ],
+    "roles": {},
+    "log": {
+      "guildId": "Add server id",
+      "channelId": "Add channel id"
+    },
+    "capmonster": {
+      "key": "Add key for captcha https://capmonster.cloud/"
+    }
+}

@@ -1,0 +1,6 @@
+/node_modules
+/src/config.json
+/tokens.txt
+/package-lock.json
+/yarn-error.log
+/yarn.lock
