@@ -33,5 +33,18 @@
     "qrcode": "^1.5.1",
     "sync-fetch": "^0.5.2",
     "ts-node": "^10.9.1"
-  }
+  },
+  "keywords": [
+    "discord",
+    "discord.js"
+  ],
+  "bugs": {
+    "url": "https://github.com/k4itrun/wick-qr-token-grabber/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/k4itrun/wick-qr-token-grabber.git"
+  },
+  "homepage": "https://github.com/k4itrun/wick-qr-token-grabber#readme"
+
 }

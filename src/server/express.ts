@@ -2,7 +2,7 @@ import express, { Express, Request, Response } from 'express';
 import * as fs from "fs";
 
 const app: Express = express();
-const port: number = parseInt(process.env.PORT || '3000');
+const port: number = parseInt(process.env.PORT || 3000);
 
 app.get('/', (req: Request, res: Response) => {
   res.json({ msg: '/tokens' });
