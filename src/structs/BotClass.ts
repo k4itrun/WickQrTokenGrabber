@@ -27,6 +27,9 @@ export class BotClient {
     this.registerEvents();
     this.registerCommands();
     this.registerButtons();
+    this.registerAntiCrash();
+
+    
   }
 
   private async registerEvents() {
@@ -64,5 +67,25 @@ export class BotClient {
       const button = await import(`../buttons/${file}`);
       this.buttons.set(button.default.id, button.default);
     }
+  }
+
+  private async registerAntiCrash() {
+    process.on('unhandledRejection', (reason: any, p: Promise<any>) => {
+      console.log('\n\n\n\n\n\n [antiCrash] :: Unhandled Rejection/Catch');
+      console.log('Reason: ', reason.stack ? String(reason.stack) : String(reason), p);
+      console.log(' [antiCrash] :: Unhandled Rejection/Catch \n\n\n\n\n\n');
+    });
+    
+    process.on("uncaughtException", (err: Error, origin: string) => {
+      console.log('\n\n\n\n\n\n [antiCrash] :: Uncaught Exception/Catch');
+      console.log('Exception: ', err.stack ? err.stack : err, origin);
+      console.log(' [antiCrash] :: Uncaught Exception/Catch \n\n\n\n\n\n');
+    });
+    
+    process.on('uncaughtExceptionMonitor', (err: Error, origin: string) => {
+      console.log('\n\n\n\n\n\n [antiCrash] :: Uncaught Exception/Catch (MONITOR)');
+      console.log(err.stack ? err.stack : err, origin);
+      console.log(' [antiCrash] :: Uncaught Exception/Catch (MONITOR) \n\n\n\n\n\n');
+    });
   }
 }
