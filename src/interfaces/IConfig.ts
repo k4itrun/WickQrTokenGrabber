@@ -3,6 +3,7 @@ export interface IConfig {
   token: string;
   clientId: string;
   colour: string;
+  port: string;
   log: {
     guildId: string;
     channelId: string;

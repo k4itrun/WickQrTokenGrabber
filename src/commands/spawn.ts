@@ -7,7 +7,6 @@ import {
 import { ActionRowBuilder, ButtonBuilder } from "@discordjs/builders";
 import * as embeds from "../util/embeds";
 
-// Array de IDs permitidos para ejecutar el comando
 import { ownerIDS } from "../config.json";
 
 export default {

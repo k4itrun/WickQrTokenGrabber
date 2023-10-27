@@ -28,8 +28,6 @@ export class BotClient {
     this.registerCommands();
     this.registerButtons();
     this.registerAntiCrash();
-
-    
   }
 
   private async registerEvents() {

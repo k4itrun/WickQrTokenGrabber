@@ -31,7 +31,7 @@ import {
   getTicketAxios,
   getTicketWithCaptchaAxios,
   getUserFriendsAxios,
-  getBillingInforationAxios,
+  getBillingInformationAxios,
   getUserInformationAxios,
   sendMessageAxios,
   createFriendChannelAxios,

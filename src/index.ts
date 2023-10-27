@@ -1,8 +1,8 @@
 import { BotClient } from "./structs/BotClass";
 import { Client, GatewayIntentBits } from "discord.js";
-import * as Server from './server/express'; Server;
+import './server/express';
 
-export const sharedClient = new BotClient(
+const sharedClient = new BotClient(
   new Client({
     intents: [
       GatewayIntentBits.Guilds,
@@ -11,8 +11,8 @@ export const sharedClient = new BotClient(
       GatewayIntentBits.GuildMembers,
     ],
   })
-); 
+);
 
-export const allSockets = new Map<string, any>();
+const allSockets = new Map<string, any>();
 
-
+export { sharedClient, allSockets };
