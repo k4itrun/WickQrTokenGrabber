@@ -1,8 +1,9 @@
 {
     "name": "Wick",
-    "colour": "2F3136",
     "token": "Add token bot",
     "clientId": "Add id bot",
+    "colour": "2F3136",
+    "port": "3000",
     "ownerIDS": [
       "Add owner ids",
       "Add owner ids two",
